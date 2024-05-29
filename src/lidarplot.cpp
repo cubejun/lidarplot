@@ -11,6 +11,7 @@ static void scanCb(sensor_msgs::msg::LaserScan::SharedPtr scan) {
   printf("[SLLIDAR INFO]: angle_range : [%f, %f]\n", RAD2DEG(scan->angle_min),
          RAD2DEG(scan->angle_max));
   cv::Mat img(500, 500, CV_8UC3, cv::Scalar(255, 255, 255));
+  cv::Mat rotateimg;
   for (int i = 0; i < count; i++) {
     float degree = scan->angle_min + scan->angle_increment * i;
     printf("[SLLIDAR INFO]: angle-distance : [%f, %f]\n", degree, scan->ranges[i]);
@@ -19,8 +20,9 @@ static void scanCb(sensor_msgs::msg::LaserScan::SharedPtr scan) {
     
     
     cv::circle(img, cv::Point(x, y), 1, cv::Scalar(0, 0, 255), 1);
+    cv::rotate(img, rotateimg, cv::ROTATE_90_COUNTERCLOCKWISE);
   }
-  cv::imshow("img", img);
+  cv::imshow("img", rotateimg);
   cv::waitKey(1);
 }
 
