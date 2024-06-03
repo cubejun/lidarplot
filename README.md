@@ -1,3 +1,4 @@
 # lidarplot
 
-https://youtube.com/shorts/XLpCFeV0Nbo?si=Hpxd6xS0MvM9W7bh
+# 동작영상
+https://youtu.be/jfq-29hLGkI
